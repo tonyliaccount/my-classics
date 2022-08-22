@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MainPage from "./Pages/MainPage.jsx";
+import MainPage from "./Pages/MainPage/MainPage.jsx";
 
 import './App.css';
 

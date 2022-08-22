@@ -1,4 +1,5 @@
 @use './../../Styles/media-query' as *;
+@use './../../Styles/variables' as *;
 
 .book {
     &__container {
@@ -26,7 +27,22 @@
     }
 
     &__image {
+        display: block;
         max-width: 100%;
         height: auto;
+        border-top-left-radius: 0.3rem;
+        border-top-right-radius: 0.3rem;
+    }
+
+    &__caption {
+        color: $color-palette-4;
+        overflow: hidden;
+        text-align: center;
+        line-height: 15px;
+        font-weight: 700;
+        padding: 3px;
+        background: $color-palette-3;
+        border-bottom-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
     }
 }
