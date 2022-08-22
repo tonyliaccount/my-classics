@@ -1,0 +1,32 @@
+@use './../../Styles/media-query' as *;
+
+.book {
+    &__container {
+
+
+        @include phase4-desktop {
+            width: 19%;
+            margin: 3px;
+        }
+
+        @include phase3-desktop {
+            width: 24%;
+            margin: 2px;
+        }
+        
+        @include phase2-tablet {
+            width: 32%;
+            margin: 1.5px;
+        }
+
+        @include phase1-tablet {
+            width: 49%;
+            margin: 0.5px;
+        }
+    }
+
+    &__image {
+        max-width: 100%;
+        height: auto;
+    }
+}

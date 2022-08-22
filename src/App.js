@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import MainPage from "./Pages/MainPage.jsx";
 
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-    </div>
+    <Routes>
+      <Route path='/' element={ <MainPage/> } />
+      {/* <Route path='/warehouse' component={WarehousePage} /> */}
+      {/* <Route path='/inventory' component={InventoryPage} /> */}
+    </Routes>
   );
 }
 
