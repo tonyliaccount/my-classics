@@ -32,11 +32,11 @@ function BookShelf() {
                     const modifiedCover = book.formats["image/jpeg"].replace(".small", ".medium");
                     const modifiedTitle = book.title.length < 39 ? book.title : book.title.substring(0,38) + "...";
                     
-                    console.log(modifiedTitle);
-                    console.log(modifiedCover);
+                    // console.log(book.id);
                     return(
                     <Book
                         key={book.id}
+                        id={book.id}
                         cover={modifiedCover}
                         title={modifiedTitle}
                     />

@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import { ReactReader } from "react-reader";
 
-function eReaderPage() {
+import axios from 'axios';
+
+function ReaderPage() {
+
+  const params = useParams();
 
   const [location, setLocation] = useState(null);
-  const [bookUrl, setBookUrl] = useState("http://localhost:8080/books/testbook.epub");
+  const [bookUrl, setBookUrl] = useState('');
 
   const locationChanged = (epubcifi) => {
     // epubcifi is a internal string used by epubjs to point 
@@ -15,13 +20,19 @@ function eReaderPage() {
 
   useEffect(() => {
 
-    /* const fetchBook = async() => {
-      const book = axios.get('http://localhost:8080/warehouse');
+    const fetchBook = async() => {
+      const epubLocation = await axios.get(`http://localhost:8080/books/${params.id}`);
+      
+      console.log(epubLocation?.data);
+      
+      if (epubLocation?.data) {
+        setBookUrl(`http://localhost:8080/${epubLocation.data}`);
+      }
     }
 
     fetchBook().catch(error =>{
       console.log(error)
-    }); */
+    });
 
   }, []);
 
@@ -31,8 +42,10 @@ function eReaderPage() {
         location={location}
         locationChanged={locationChanged}
         showToc={true}
-        url={bookUrl}
+        url={ bookUrl }
       />
     </div>
   );
 }
+
+export default ReaderPage;
