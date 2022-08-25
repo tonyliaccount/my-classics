@@ -4,6 +4,22 @@ $phase3-desktop: 979px;
 $phase4-desktop: 980px;
 $phase5-desktop: 1200px;
 
+$standard-tablet: 768px;
+$standard-desktop: 1024px;
+
+@mixin standard-tablet {
+  @media screen and (min-width: $standard-tablet) {
+    @content;
+  }
+}
+
+@mixin standard-desktop {
+  @media screen and (min-width: $standard-desktop) {
+    @content;
+  }
+}
+
+
 @mixin phase1-tablet {
   @media screen and (max-width: $phase1-tablet) {
     @content;

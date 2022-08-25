@@ -34,7 +34,7 @@ function ReaderPage() {
       console.log(error)
     });
 
-  }, []);
+  }, [params]);
 
   return (
     <div style={{ height: "100vh" }}>
