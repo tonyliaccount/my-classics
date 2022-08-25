@@ -1,0 +1,17 @@
+@use './../../Styles/media-query' as *;
+@use './../../Styles/variables' as *;
+
+.bookshelf {
+
+    &__container {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: 0rem auto;
+        background: $color-palette-2;
+    
+        @include phase5-desktop {
+            max-width: 1200px;
+        }
+    }
+}
