@@ -11,8 +11,6 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={ <MainPage/> } />
-      <Route path='/search' element={ <MainPage/> } />
-      <Route path='/search/:query' element={ <MainPage/> } />
       <Route path='/book/:id' element={ <ReaderPage/> } />
       {/* <Route path='/inventory' element={InventoryPage} /> */}
     </Routes>

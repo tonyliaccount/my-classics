@@ -2,8 +2,10 @@
 @use './../../Styles/variables' as *;
 
 .book {
-    &__container {
 
+    transition: 0.3s;
+
+    &__container {
 
         @include phase4-desktop {
             width: 19%;
@@ -32,6 +34,11 @@
         height: auto;
         border-top-left-radius: 0.3rem;
         border-top-right-radius: 0.3rem;
+        object-fit: contain;
+        width: 250px;
+        max-height: 353px;
+        background-color:  $color-palette-3;
+
     }
 
     &__caption {
@@ -41,8 +48,9 @@
         line-height: 15px;
         font-weight: 700;
         padding: 3px;
-        background: $color-palette-3;
         border-bottom-left-radius: 0.3rem;
         border-bottom-right-radius: 0.3rem;
+        background: $color-palette-3;
+
     }
 }

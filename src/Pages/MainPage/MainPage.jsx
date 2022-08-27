@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
 import BookShelf from './../../Elements/BookShelf/BookShelf.jsx';
 import NavBar from '../../Elements/NavBar/NavBar.jsx';
+import Paginator from '../../Elements/Paginator/Paginator.jsx';
 
 import "./MainPage.scss";
 
-function MainPage() {
+function MainPage(props) {
 
-  const params = useParams();
-  const [books, setBooks] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [booksSearch, setBooksSearch] = useState([]);
 
   useEffect(() => {
+
     const fetchBooks = async() => {
+      const queryString = searchParams.toString();
+      console.log(queryString);
 
-      if (params?.query) {
-        const response = await axios.get(`http://localhost:8080/books/search/${params.query}`);
-
-        setBooks(response.data);
+      if (queryString) {
+        const response = await axios.get(`http://localhost:8080/books/?${queryString}`);
+        console.log(response.data);
+        setBooksSearch(response.data);
       } else {
-        const response = await axios.get('http://localhost:8080/books');
-        setBooks(response.data);
+        const response = await axios.get(`http://localhost:8080/books/`);
+        console.log(response.data);
+        setBooksSearch(response.data);
       }
     }
 
@@ -29,12 +34,13 @@ function MainPage() {
       console.log(error)
     });
 
-  }, [params]);
+  }, [searchParams]);
 
   return (
     <div className='main-page'>
       <NavBar></NavBar>
-      <BookShelf books={ books }></BookShelf>
+      <BookShelf books={ booksSearch.results }></BookShelf>
+      <Paginator previousPage={booksSearch.previous} currentPage={booksSearch.page} nextPage={booksSearch.next}></Paginator>
     </div>
   );
 }

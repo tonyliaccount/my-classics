@@ -7,7 +7,7 @@ function Book(props) {
     return(
         <div className="book__container">
             <Link to = {`/book/${props.id}`} style={{ textDecoration: 'none' }}>
-                <img width="250" height="353" className="book__image" alt="book cover" src={props.cover}/>
+                <img className="book__image" alt="book cover" src={props.cover}/>
                 <div className="book__caption">{props.title}</div>
             </Link>
         </div>

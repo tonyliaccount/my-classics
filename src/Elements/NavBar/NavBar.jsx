@@ -7,7 +7,7 @@ import searchIcon from './../../Assets/Icons/icons-search.svg';
 
 function NavBar() {
 
-    const navigate = useNavigate();
+    let navigate = useNavigate();
     const [searchTerms, setSearchTerms] = useState("");
 
     const handleChange = (e) => {
@@ -15,9 +15,9 @@ function NavBar() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+       e.preventDefault();
 
-        navigate(`/search/${searchTerms}`);
+        navigate(`/?search=${searchTerms}`);
     }
 
     return(
@@ -28,7 +28,7 @@ function NavBar() {
                     placeholder="e.g. Harvard Classics"
                     onChange={(e) => {handleChange(e)}}>
                 </input>
-                <Link to={`/search/${searchTerms}`}>
+                <Link to={ { pathname: '/', search: `?search=${searchTerms}`}}>
                     <div className="navbar__input-submit">
                         <img alt="Search icon" className="navbar__input-search-icon" src={searchIcon}></img>
                     </div>
