@@ -21,12 +21,12 @@ function ReaderPage() {
   useEffect(() => {
 
     const fetchBook = async() => {
-      const epubLocation = await axios.get(`http://localhost:8080/books/${params.id}`);
+      const epubLocation = await axios.get(`https://myclassics-api.herokuapp.com/books/${params.id}`);
       
       console.log(epubLocation?.data);
       
       if (epubLocation?.data) {
-        setBookUrl(`http://localhost:8080/${epubLocation.data}`);
+        setBookUrl(`https://myclassics-api.herokuapp.com/${epubLocation.data}`);
       }
     }
 
@@ -34,7 +34,7 @@ function ReaderPage() {
       console.log(error)
     });
 
-  }, []);
+  }, [params]);
 
   return (
     <div style={{ height: "100vh" }}>

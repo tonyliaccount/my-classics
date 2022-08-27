@@ -5,10 +5,12 @@
 
     &__container {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         flex-wrap: wrap;
-        margin: 0rem auto;
+        margin: 10px auto;
         background: $color-palette-2;
+        padding: 10px;
+        border-radius: 5px;
     
         @include phase5-desktop {
             max-width: 1200px;

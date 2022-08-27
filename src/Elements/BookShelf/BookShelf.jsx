@@ -1,38 +1,20 @@
-import { useEffect, useState } from "react";
-import axios from 'axios';
 
 import Book from "./../Book/Book.jsx";
 
 import "./BookShelf.scss";
 
-function BookShelf() {
-
-    const [bookshelf, setBookshelf] = useState([]);
-
-    useEffect(() => {
-
-        const fetchBook = async() => {
-            const response = await axios.get('http://localhost:8080/books');
-
-            console.log(response.data);
-            setBookshelf(response.data);
-        }
-
-        fetchBook().catch(error =>{
-            console.log(error)
-        });
-
-    }, []);
+function BookShelf(props) {
 
     return (
         <div className="bookshelf__container">
             {
-                bookshelf?.results?.map( book => {
+                props.books?.map( book => {
 
-                    const modifiedCover = book.formats["image/jpeg"].replace(".small", ".medium");
-                    const modifiedTitle = book.title.length < 39 ? book.title : book.title.substring(0,38) + "...";
+                    const modifiedCover = book.formats["image/jpeg"] ? book.formats["image/jpeg"].replace(".small", ".medium") : "";
+                    // const modifiedTitle = book.title.length < 39 ? book.title : book.title.substring(0,38) + "...";
                     
-                    // console.log(book.id);
+                    const modifiedTitle = book.title;
+
                     return(
                     <Book
                         key={book.id}
