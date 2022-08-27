@@ -17,15 +17,12 @@ function MainPage(props) {
 
     const fetchBooks = async() => {
       const queryString = searchParams.toString();
-      console.log(queryString);
 
       if (queryString) {
         const response = await axios.get(`http://localhost:8080/books/?${queryString}`);
-        console.log(response.data);
         setBooksSearch(response.data);
       } else {
         const response = await axios.get(`http://localhost:8080/books/`);
-        console.log(response.data);
         setBooksSearch(response.data);
       }
     }
