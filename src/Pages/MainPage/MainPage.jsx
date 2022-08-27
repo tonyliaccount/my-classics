@@ -19,10 +19,10 @@ function MainPage(props) {
       const queryString = searchParams.toString();
 
       if (queryString) {
-        const response = await axios.get(`http://localhost:8080/books/?${queryString}`);
+        const response = await axios.get(`https://myclassics-api.herokuapp.com/books/?${queryString}`);
         setBooksSearch(response.data);
       } else {
-        const response = await axios.get(`http://localhost:8080/books/`);
+        const response = await axios.get(`https://myclassics-api.herokuapp.com/books/`);
         setBooksSearch(response.data);
       }
     }
